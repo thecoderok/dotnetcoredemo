@@ -21,6 +21,5 @@ namespace WebApplication.Controllers
         {
             return View(this.m_productsRepository.FindById(productId));
         }
-
     }
 }
