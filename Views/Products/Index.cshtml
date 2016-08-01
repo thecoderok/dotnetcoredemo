@@ -1,0 +1,15 @@
+@using WebApplication.Data
+@model IList<ProductModel>
+
+<h1>Products</h1>
+
+@foreach(var product in Model)
+{
+    <div>
+        <span>@product.Name</span>
+        <span>
+            <a asp-action="Show" asp-route-id="@product.Id">Show details</a>
+        </span>
+
+    </div>
+}
