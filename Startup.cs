@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -54,6 +50,7 @@ namespace WebApplication
             services.AddTransient<ISmsSender, AuthMessageSender>();
             
             services.AddTransient<IProductsRepository, MockProductsRepository>();
+            services.AddSingleton<ISeoFriendlyUrlStringConverter, SeoFriendlyUrlStringConverter>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -81,6 +78,10 @@ namespace WebApplication
 
             app.UseMvc(routes =>
             {
+                routes.MapRoute(
+                    name: "products",
+                    template: "{controller=Products}/{action=Show}/{id}/{name?}");
+
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");

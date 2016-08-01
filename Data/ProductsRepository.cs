@@ -30,6 +30,11 @@ namespace WebApplication.Data
             {
                 Id = 1,
                 Name = "iPhone 6S"
+            },
+            new ProductModel()
+            {
+                Id = 2,
+                Name = "Антонов 224 'Мрія'"
             }
         };
 

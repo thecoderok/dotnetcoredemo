@@ -1,5 +1,7 @@
 @using WebApplication.Data
+@using WebApplication.Services
 @model IList<ProductModel>
+@inject ISeoFriendlyUrlStringConverter converter
 
 <h1>Products</h1>
 
@@ -8,7 +10,7 @@
     <div>
         <span>@product.Name</span>
         <span>
-            <a asp-action="Show" asp-route-id="@product.Id">Show details</a>
+            <a asp-action="Show" asp-route-id="@product.Id" asp-route-name="@converter.ToSeoFriendlyString(product.Name)">Show details</a>
         </span>
 
     </div>
